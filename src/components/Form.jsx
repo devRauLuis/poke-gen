@@ -37,7 +37,7 @@ function Form(props) {
                 onInput={props.onInput}
                 required
                 defaultValue={date}
-                maxgit={date}
+                max={date}
                 pattern="\d{4}-\d{2}-\d{2}"
               />
             </label>
