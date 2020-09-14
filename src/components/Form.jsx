@@ -2,7 +2,6 @@ import * as PropTypes from "prop-types";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faInfo } from "@fortawesome/free-solid-svg-icons";
-import About from "./About";
 
 const curr = new Date();
 curr.setDate(curr.getDate());
