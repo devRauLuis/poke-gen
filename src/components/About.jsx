@@ -47,6 +47,7 @@ const About = (props) => {
             "w-3/5 sm:w-1/4 mx-auto transition transform duration-150 hover:scale-105"
           }
           onMouseOver={handleMouse}
+          onMouseLeave={handleMouse}
           alt="Memoji of the creator"
         />
         <h2 className={"text-3xl"}>

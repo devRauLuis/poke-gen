@@ -1,5 +1,5 @@
 import * as PropTypes from "prop-types";
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faInfo } from "@fortawesome/free-solid-svg-icons";
 
