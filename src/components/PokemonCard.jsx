@@ -59,40 +59,62 @@ const Card = (props) => {
     return validPokemon;
   }
 
-  const type = randomType(props.season);
+  const choseType = randomType(props.season); //Name was changed in order to test async/await
 
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/type/${type}/`)
-      .then((r) => {
-        if (r.ok) {
-          return r.json();
-        }
-        let error = new Error();
-        const responseError = {
-          type: "Error",
-          message: r.message || "Something went wrong",
-          data: r.data || "",
-          code: r.code || "",
-        };
-        error = { ...error, ...responseError };
-        throw { error };
-      })
-      .then((type) => validNameChooser(type.pokemon))
-      .then((chosePokemon) => {
-        fetch(chosePokemon.url)
-          .then((r) => r.json())
-          .then((pkmn) => {
-            setPokemon(pkmn);
-            setPokemon((pokemon) => ({
-              ...pokemon,
-              img: `https://pokeres.bastionbot.org/images/pokemon/${pkmn.id}.png`,
-            }));
-            setTimeout(setLoading(false), 1000);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    // Fetching data using async/await
+    async function fetchData() {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/type/${choseType}/`
+      );
+      const type = await response.json();
+      const chosePokemon = await validNameChooser(type.pokemon);
+      const fetchedPokemon = await fetch(chosePokemon.url);
+      const pokemonData = fetchedPokemon.ok
+        ? await fetchedPokemon.json()
+        : new Error();
+      setPokemon({
+        ...pokemonData,
+        img: `https://pokeres.bastionbot.org/images/pokemon/${pokemonData.id}.png`,
       });
+      setTimeout(setLoading(false), 2000);
+      return console.log("Data fetched successfully");
+    }
+    fetchData();
+
+    // Fetching data using fetch and promises
+
+    // fetch(`https://pokeapi.co/api/v2/type/${type}/`)
+    //   .then((r) => {
+    //     if (r.ok) {
+    //       return r.json();
+    //     }
+    //     let error = new Error();
+    //     const responseError = {
+    //       type: "Error",
+    //       message: r.message || "Something went wrong",
+    //       data: r.data || "",
+    //       code: r.code || "",
+    //     };
+    //     error = { ...error, ...responseError };
+    //     throw { error };
+    //   })
+    //   .then((type) => validNameChooser(type.pokemon))
+    //   .then((chosePokemon) => {
+    //     fetch(chosePokemon.url)
+    //       .then((r) => if(r.ok) {r.json()})
+    //       .then((pkmn) => {
+    //         setPokemon(pkmn);
+    //         setPokemon((pokemon) => ({
+    //           ...pokemon,
+    //           img: `https://pokeres.bastionbot.org/images/pokemon/${pkmn.id}.png`,
+    //         }));
+    //         setTimeout(setLoading(false), 1000);
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //   });
   }, []);
 
   if (loading) {

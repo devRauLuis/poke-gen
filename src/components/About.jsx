@@ -46,8 +46,7 @@ const About = (props) => {
           className={
             "w-3/5 sm:w-1/4 mx-auto transition transform duration-150 hover:scale-105"
           }
-          onMouseEnter={handleMouse}
-          onMouseLeave={handleMouse}
+          onMouseOver={handleMouse}
           alt="Memoji of the creator"
         />
         <h2 className={"text-3xl"}>

@@ -4,13 +4,14 @@ import seasonsSetter from "./scripts/seasonSetter";
 import Card from "./components/PokemonCard";
 import "./App.css";
 import About from "./components/About";
+import { date } from "./scripts/date";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: null,
-      season: " ",
+      date: date,
+      season: seasonsSetter(new Date().getMonth() + 1), //+1 because the month that we got from the Date object is zero-indexed
       isCardShowing: false,
       wasFormSubmitted: false,
       isAbout: false,
@@ -18,13 +19,12 @@ class App extends React.Component {
   }
 
   handleInput = (e) => {
-    const [year, month, day] = e.target.value
+    const [, month] = e.target.value
       .replace(/-/g, " ")
       .split(" ")
       .map((elem) => parseInt(elem, 10));
     const season = seasonsSetter(month);
     this.setState({
-      date: { month: month, day: day, year: year },
       season: season,
     });
   };
@@ -61,6 +61,7 @@ class App extends React.Component {
             onInput={this.handleInput}
             onSubmit={this.handleSubmit}
             onInfo={this.handleInfo}
+            date={date}
           />
         )}
         {this.state.isCardShowing && (

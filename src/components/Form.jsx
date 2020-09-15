@@ -3,10 +3,6 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faInfo } from "@fortawesome/free-solid-svg-icons";
 
-const curr = new Date();
-curr.setDate(curr.getDate());
-const date = curr.toISOString().substr(0, 10);
-
 function Form(props) {
   return (
     <div>
@@ -36,8 +32,8 @@ function Form(props) {
                 }
                 onInput={props.onInput}
                 required
-                defaultValue={date}
-                max={date}
+                defaultValue={props.date}
+                max={props.date}
                 pattern="\d{4}-\d{2}-\d{2}"
               />
             </label>
