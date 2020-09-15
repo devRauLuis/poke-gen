@@ -10,7 +10,7 @@ const About = (props) => {
 
   const handleMouse = (e) => {
     const img = creator.img === memoji1 ? memoji2 : memoji1;
-    setCreator((creator) => ({ ...creator, img: img }));
+    setCreator({ img: img });
   };
 
   const socialIconsStyles =
