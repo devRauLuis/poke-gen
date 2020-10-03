@@ -2,7 +2,6 @@ import React from "react";
 import Form from "./components/Form";
 import seasonsSetter from "./scripts/seasonSetter";
 import Card from "./components/PokemonCard";
-import "./App.css";
 import About from "./components/About";
 import { date } from "./scripts/date";
 

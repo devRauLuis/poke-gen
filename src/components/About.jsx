@@ -17,7 +17,7 @@ const About = (props) => {
     "text-4xl m-2 transition transform duration-150 hover:scale-95 text-black";
 
   const copyrightLinksStyles =
-    "text-red-500 transition transform duration-100 hover:text-gray-800 hover:scale-105";
+    "text-teal-300 font-semibold transition transform duration-100 hover:text-gray-800 hover:scale-105";
 
   return (
     <div className={"flex flex-col h-screen w-full bg-white z-40"}>
@@ -81,7 +81,7 @@ const About = (props) => {
       </div>
       <div
         className={
-          "h-full flex flex-col justify-center place-content-center items-center w-full text-justify align-middle mx-auto py-6 px-3"
+          "h-full bg-red-600 text-white flex flex-col justify-center place-content-center items-center w-full text-justify align-middle mx-auto py-6 px-3"
         }
       >
         <div className={"mb-2"}>
@@ -98,7 +98,7 @@ const About = (props) => {
           </a>
         </div>
         <div className={""}>
-          &copy; Icons made by{" "}
+          &copy; Some icons were made by{" "}
           <a
             href="https://www.flaticon.com/authors/those-icons"
             title="Those Icons"
@@ -106,7 +106,7 @@ const About = (props) => {
             Those Icons
           </a>{" "}
           from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
+          <a href="https://www.flaticon.com/" title="Flaticon" className={copyrightLinksStyles}>
             www.flaticon.com
           </a>
         </div>
