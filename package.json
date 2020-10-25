@@ -43,7 +43,7 @@
     "prettier": "^2.1.2",
     "tailwindcss": "^1.8.4"
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "description": "This is a personal project created for my portfolio.",
   "main": "postcss.config.js",
   "keywords": [
     "pokemon",
